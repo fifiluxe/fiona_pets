@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 
 Widget myTextField({
-  hintText,
-  required controller,
+  String? hintText,
+  required TextEditingController controller,
   Color? fillColor,
   Color? textColor,
   Color? hintTextColor,
+  bool obscureText = false,
+  TextInputType? keyboardType, // Optional keyboard type
 }) {
   return TextField(
     controller: controller,
-    style: TextStyle(color: textColor), // This controls input text color
+    obscureText: obscureText,
+    keyboardType: keyboardType, // Apply the keyboard type
+    style: TextStyle(color: textColor), // Controls input text color
     decoration: InputDecoration(
       hintText: hintText,
       fillColor: fillColor ?? Colors.transparent,
-      hintStyle: TextStyle(
-        color: hintTextColor,
-      ), // This controls hint text color
-      prefixIcon: Icon(Icons.person),
-      border: OutlineInputBorder(borderSide: BorderSide()),
+      filled: fillColor != null, // Enable fill color only if provided
+      hintStyle: TextStyle(color: hintTextColor), // Controls hint text color
+      prefixIcon: const Icon(Icons.person),
+      border: const OutlineInputBorder(borderSide: BorderSide()),
     ),
   );
 }
